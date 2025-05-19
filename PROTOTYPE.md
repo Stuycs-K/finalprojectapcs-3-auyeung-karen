@@ -19,25 +19,25 @@ In this game, players are presented with a 9x9 board filled with different types
 * Different levels  
 * Power ups  
 
-## 9x9 Board:  
+### 9x9 Board:  
 * 2D array  
 * Each element in the array corresponds to a candy in the board  
 
-## Swapping candies:  
+### Swapping candies:  
 * User input (clicking on candies)  
 * Swapping logic  
 
-## Matching mechanic:  
+### Matching mechanic:  
 * After a swap, checks board for rows/columns of three (or more)  
 * If candies are in a row/column, value is changed (to negative number) and candies destroyed  
 
-## Crushing and gravity mechanic:  
+### Crushing and gravity mechanic:  
 * Candies with negative values are destroyed (should all be adjacent?)  
 * Candies above the empty space fall down  
 * If top row is detected as empty, more candies get replenished and fall down  
 * If replenishing candies creates three in a row/column, candies need to be continuously   destroyed/replaced until it stops  
 
-## Needed classes:  
+### Needed classes:  
 * Board  
 * Candy  
 
