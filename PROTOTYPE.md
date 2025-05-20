@@ -41,7 +41,6 @@ In this game, players are presented with a 9x9 board filled with different types
 * Board  
 * Candy  
 
-
 A description of your technical design. This should include:
 
 How you will be using the topics covered in class in the project.
@@ -58,7 +57,7 @@ How you are breaking down the project and who is responsible for which parts.
 
 A timeline with expected completion dates of parts of the project. (CHANGE THIS!!!!!)
 
-### Board and Candy classes, 9x9 grid filled with candies - 5/23
-### Swapping candy mechanic - 5/26
-### Matching mechanic - 5/28
-### Crushing and gravity mechanic - 5/30 (or until 6/1 if needed)
+Board and Candy classes, 9x9 grid filled with candies - 5/23  
+Swapping candy mechanic - 5/26  
+Matching mechanic - 5/28  
+Crushing and gravity mechanic - 5/30 (or until 6/1 if needed)  
