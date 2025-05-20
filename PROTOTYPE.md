@@ -57,3 +57,8 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 How you are breaking down the project and who is responsible for which parts.
 
 A timeline with expected completion dates of parts of the project. (CHANGE THIS!!!!!)
+
+### Board and Candy classes, 9x9 grid filled with candies - 5/23
+### Swapping candy mechanic - 5/26
+### Matching mechanic - 5/28
+### Crushing and gravity mechanic - 5/30 (or until 6/1 if needed)
