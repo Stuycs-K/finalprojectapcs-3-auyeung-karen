@@ -32,7 +32,7 @@ In this game, players are presented with a 9x9 board filled with different types
 * If candies are in a row/column, value is changed (to negative number) and candies destroyed  
 
 ### Crushing and gravity mechanic:  
-* Candies with negative values are destroyed (should all be adjacent?)  
+* Candies with negative values are destroyed (should all be adjacent)  
 * Candies above the empty space fall down  
 * If top row is detected as empty, more candies get replenished and fall down  
 * If replenishing candies creates three in a row/column, candies need to be continuously   destroyed/replaced until it stops  
@@ -41,21 +41,14 @@ In this game, players are presented with a 9x9 board filled with different types
 * Board  
 * Candy  
 
-A description of your technical design. This should include:
-
-How you will be using the topics covered in class in the project.
-
 # Project Design
 
-UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 
+![UML Diagrams](UML.jpeg?raw=true "UML" )
 
+Game manages Board, Board uses Candy class.
 
 # Intended pacing:
-
-How you are breaking down the project and who is responsible for which parts.
-
-A timeline with expected completion dates of parts of the project. (CHANGE THIS!!!!!)
 
 Board and Candy classes, 9x9 grid filled with candies - 5/23  
 Swapping candy mechanic - 5/26  
