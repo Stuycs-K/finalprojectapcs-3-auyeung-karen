@@ -40,13 +40,14 @@ In this game, players are presented with a 9x9 board filled with different types
 ### Needed classes:  
 * Board  
 * Candy  
+* Game
+* Player
 
 # Project Design
 
+![UML Diagrams](UML.png?raw=true "UML" )
 
-![UML Diagrams](UML.jpeg?raw=true "UML" )
-
-Game manages Board, Board uses Candy class.
+Game uses Board and Player classes. Board is set up with Candies.
 
 # Intended pacing:
 
