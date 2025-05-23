@@ -45,7 +45,6 @@ class Board{
     int y = mouseY/9;
     selected = grid[x][y];
     grid[x][y].select();
-    println(selected);
   }
   
   public boolean isAdjacent(Candy one, Candy two){
