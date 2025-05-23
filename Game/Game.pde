@@ -38,4 +38,5 @@ void drawBoard(Board board){
      r = 0;
      c += cellSize;
    }
+   
 }
