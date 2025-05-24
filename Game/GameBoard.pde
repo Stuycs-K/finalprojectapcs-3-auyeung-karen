@@ -10,48 +10,36 @@ class Board{
     
     for (int i = 0; i < rows; i++){
       for (int j = 0; j < cols; j++){
-        grid[i][j] = new Candy(j, i, (int)(Math.random()*6));
-        /*if (i > 0 && i < rows-1 && j > 0 && j < cols){
-          if (grid[i-1][j].getType() == grid[i][j].getType()){
-            grid[i][j] = new Candy(j, i, (grid[i][j].getType()+1)%6);
-          }
-          if (grid[i][j-1].getType() == grid[i][j].getType()){
-            grid[i][j] = new Candy(j, i, (grid[i][j].getType()+1)%6);
-            println(j + " " + i);
-          }
+        int type = (int)(Math.random()*6);
+        
+        if (i >= 2 && grid[i-1][j].getType() == type && grid[i-2][j].getType() == type){
+          type = (type+1)%6;
         }
-        else if ((i == 0 || i == rows-1) && j != 0){
-          if (grid[i][j-1].getType() == grid[i][j].getType()){
-            grid[i][j] = new Candy(j, i, (grid[i][j].getType()+1)%6);
-            println(j + " " + i);
-          }
-          if (i == rows-1){
-            if (grid[i-1][j].getType() == grid[i][j].getType()){
-              grid[i][j] = new Candy(j, i, (grid[i][j].getType()+1)%6);
-            }
-          }
+        if (j >= 2 && grid[i][j-1].getType() == type && grid[i][j-2].getType() == type){
+          type = (type+1)%6;
         }
-        else if ((j == 0 || j == cols-1) && i != 0){
-          if (grid[i-1][j].getType() == grid[i][j].getType()){
-            grid[i][j] = new Candy(j, i, (grid[i][j].getType()+1)%6);
-          }
-        }*/
+        grid[i][j] = new Candy(j, i, type);
       }
+        
     }
+      
+      
+      
   }
   
   void mouseClick(int mouseX, int mouseY){
     int x = mouseX/cellSize;
     int y = mouseY/cellSize;
-    if (!board.grid[y][x].isSelected()){
-      selected = grid[y][x];
-      board.grid[y][x].select();
+    if (x >= 0 && x < 9 && y >= 0 && y < 9){
+      if (!board.grid[y][x].isSelected()){
+        selected = grid[y][x];
+        board.grid[y][x].select();
+      }
+      else{
+        selected = null;
+        board.grid[y][x].deselect();
+      }
     }
-    else{
-      selected = null;
-      board.grid[y][x].deselect();
-    }
-    
     println(x);
   }
   

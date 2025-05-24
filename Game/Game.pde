@@ -4,7 +4,7 @@ int cellSize;
 void setup(){
   size(500,500);
   board = new Board(9, 9);
-  cellSize = height/9;
+  cellSize = 400/9;
   //drawBoard(board);
 }
 
@@ -18,30 +18,30 @@ void drawBoard(Board board){
    int c = 0;
    for (int i = 0; i < 9; i++){
      for (int j = 0; j < 9; j++){
-       noStroke();
-       if (board.grid[i][j].isSelected()){
+       Candy candy = board.grid[i][j];
+       if (candy.isSelected()){
          stroke(0);
          strokeWeight(4);
        }
        else{
          noStroke();
        }
-       if (board.grid[i][j].getType() == 0){
+       if (candy.getType() == 0){
          fill(#E53535); //red
        }
-       if (board.grid[i][j].getType() == 1){
+       if (candy.getType() == 1){
          fill(#FCA240); //orange
        }
-       if (board.grid[i][j].getType() == 2){
+       if (candy.getType() == 2){
          fill(#FCD94A); //yellow
        }
-       if (board.grid[i][j].getType() == 3){
+       if (candy.getType() == 3){
          fill(#40D346); //green
        }
-       if (board.grid[i][j].getType() == 4){
+       if (candy.getType() == 4){
          fill(#458EE5); //blue
        }
-       if (board.grid[i][j].getType() == 5){
+       if (candy.getType() == 5){
          fill(#B745E5); //purple
        }
        rect(r, c, cellSize, cellSize);
