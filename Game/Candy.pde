@@ -5,7 +5,7 @@ class Candy{
   private int type;
   private int x, y;
   private boolean matched;
-  private boolean isSelected;
+  private boolean selected;
   
   Candy(int x, int y, int type){
     this.x = x;
@@ -22,12 +22,16 @@ class Candy{
      return matched;
   }
   
+  public boolean isSelected(){
+     return selected;
+  }
+  
   public void select(){
-     isSelected = true;
+     selected = true;
   }
   
   public void deselect(){
-     isSelected = false;
+     selected = false;
   }
   
   

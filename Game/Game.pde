@@ -5,6 +5,11 @@ void setup(){
   size(500,500);
   board = new Board(9, 9);
   cellSize = height/9;
+  //drawBoard(board);
+}
+
+void draw(){
+  background(255);
   drawBoard(board);
 }
 
@@ -14,6 +19,13 @@ void drawBoard(Board board){
    for (int i = 0; i < 9; i++){
      for (int j = 0; j < 9; j++){
        noStroke();
+       if (board.grid[i][j].isSelected()){
+         stroke(0);
+         strokeWeight(4);
+       }
+       else{
+         noStroke();
+       }
        if (board.grid[i][j].getType() == 0){
          fill(#E53535); //red
        }
@@ -34,9 +46,17 @@ void drawBoard(Board board){
        }
        rect(r, c, cellSize, cellSize);
        r += cellSize;
+       
      }
      r = 0;
      c += cellSize;
    }
-   
 }
+
+
+
+void mousePressed() {
+  board.mouseClick(mouseX, mouseY);
+}
+  
+  

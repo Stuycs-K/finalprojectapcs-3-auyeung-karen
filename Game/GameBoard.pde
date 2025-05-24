@@ -41,10 +41,18 @@ class Board{
   }
   
   void mouseClick(int mouseX, int mouseY){
-    int x= mouseX/9;
-    int y = mouseY/9;
-    selected = grid[x][y];
-    grid[x][y].select();
+    int x = mouseX/cellSize;
+    int y = mouseY/cellSize;
+    if (!board.grid[y][x].isSelected()){
+      selected = grid[y][x];
+      board.grid[y][x].select();
+    }
+    else{
+      selected = null;
+      board.grid[y][x].deselect();
+    }
+    
+    println(x);
   }
   
   public boolean isAdjacent(Candy one, Candy two){
