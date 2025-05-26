@@ -31,21 +31,44 @@ class Board{
     int x = mouseX/cellSize;
     int y = mouseY/cellSize;
     if (x >= 0 && x < 9 && y >= 0 && y < 9){
-      if (!board.grid[y][x].isSelected()){
-        selected = grid[y][x];
-        board.grid[y][x].select();
+      Candy clickedCandy = grid[y][x];
+      if (selected == null){
+        selected = clickedCandy;
+        clickedCandy.select();
       }
       else{
-        selected = null;
-        board.grid[y][x].deselect();
+        if (isAdjacent(selected, clickedCandy)){
+          swapCandies(selected, clickedCandy);
+          selected.deselect();
+          clickedCandy.deselect();
+          selected = null;
+          clickedCandy = null;
+        }
+        else{
+          selected.deselect();
+          selected = clickedCandy;
+          selected.select();
+        }
       }
     }
-    println(x);
+    
   }
   
   public boolean isAdjacent(Candy one, Candy two){
-    return (abs(one.x - two.x) == 1 && one.y == two.y || abs(one.y - two.y) == 1 && one.x == two.x);
+    return ((abs(one.x - two.x) == 1 && one.y == two.y) || (abs(one.y - two.y) == 1 && one.x == two.x));
   }
   
+  public void swapCandies(Candy one, Candy two){
+    int tempType = one.getType();
+    one.type = two.getType();
+    two.type = tempType;
+    
+    int tempX = one.x;
+    int tempY = one.y;
+    one.x = two.x;
+    one.y = two.y;
+    two.x = tempX;
+    two.y = tempY;
+  }
   
 }
