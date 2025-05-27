@@ -2,9 +2,9 @@ Board board;
 int cellSize;
 
 void setup(){
-  size(500,500);
+  size(900,900);
   board = new Board(9, 9);
-  cellSize = 400/9;
+  cellSize = 900/9;
   //drawBoard(board);
 }
 
@@ -14,8 +14,6 @@ void draw(){
 }
 
 void drawBoard(Board board){
-  int r = 0;
-   int c = 0;
    for (int i = 0; i < 9; i++){
      for (int j = 0; j < 9; j++){
        Candy candy = board.grid[i][j];
@@ -26,6 +24,7 @@ void drawBoard(Board board){
        else{
          noStroke();
        }
+       
        if (candy.getType() == 0){
          fill(#E53535); //red
        }
@@ -44,12 +43,10 @@ void drawBoard(Board board){
        if (candy.getType() == 5){
          fill(#B745E5); //purple
        }
-       rect(r, c, cellSize, cellSize);
-       r += cellSize;
-       
+       int x = j * cellSize;
+       int y = i * cellSize;
+       rect(x, y, cellSize, cellSize);
      }
-     r = 0;
-     c += cellSize;
    }
 }
 

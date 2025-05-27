@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 class Board{
-  Candy[][] grid;
-  Candy selected = null;
+  private Candy[][] grid;
+  private Candy selected = null;
   
   public Board(int rows, int cols){
     grid = new Candy[rows][cols];
@@ -30,32 +30,30 @@ class Board{
   void mouseClick(int mouseX, int mouseY){
     int x = mouseX/cellSize;
     int y = mouseY/cellSize;
+    Candy clickedCandy = null;
+    println("Mouse clicked at: (" + mouseX + ", " + mouseY + ")");
+    println("Mapped to grid coordinates: (" + x + ", " + y + ")");
     if (x >= 0 && x < 9 && y >= 0 && y < 9){
-      Candy clickedCandy = grid[y][x];
+      clickedCandy = grid[y][x];
+      
       if (selected == null){
         selected = clickedCandy;
-        clickedCandy.select();
+        selected.setSelected(true);
+      }
+      else if (selected == clickedCandy){
+        selected.setSelected(false);
+        selected = null;
       }
       else{
-        if (isAdjacent(selected, clickedCandy)){
-          swapCandies(selected, clickedCandy);
-          selected.deselect();
-          clickedCandy.deselect();
-          selected = null;
-          clickedCandy = null;
-        }
-        else{
-          selected.deselect();
-          selected = clickedCandy;
-          selected.select();
-        }
+        
       }
     }
     
   }
   
   public boolean isAdjacent(Candy one, Candy two){
-    return ((abs(one.x - two.x) == 1 && one.y == two.y) || (abs(one.y - two.y) == 1 && one.x == two.x));
+    println("Checking adjacency between (" + one.getX() + ", " + one.getY() + ") and (" + two.getX() + ", " + two.getY() + ")");
+    return false;
   }
   
   public void swapCandies(Candy one, Candy two){
@@ -63,12 +61,12 @@ class Board{
     one.type = two.getType();
     two.type = tempType;
     
-    int tempX = one.x;
-    int tempY = one.y;
-    one.x = two.x;
-    one.y = two.y;
-    two.x = tempX;
-    two.y = tempY;
+    int tempX = one.getX();
+    int tempY = one.getY();
+    one.setX(two.getX());
+    one.setY(two.getY());
+    two.setX(tempX);
+    two.setY(tempY);
   }
   
 }
