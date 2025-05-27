@@ -50,6 +50,9 @@ class Board{
         if (isAdjacent(selected, clickedCandy)){
           println("adjacent");
           swapCandies(selected, clickedCandy);
+          if (!checkMatches()){
+            swapCandies(selected, clickedCandy);
+          }
           selected.setSelected(false);
           selected = null;
         }
@@ -82,15 +85,16 @@ class Board{
     two.setY(tempY);*/
   }
   
-  public void checkHorizontalMatches(){
-    for (int i = 2; i < grid.length-2; i++){
-      for (int j = 2; j < grid[0].length-2; j++){
-        int currentType = grid[i][j].getType();
-        if (grid[i+1][j].getType() == currentType && grid[i+2][j].getType() == currentType){
-          println("three horizontal");
-        }
-      }
-    }
+  public boolean checkHorizontalMatches(){
+    return false;
+  }
+  
+  public boolean checkVerticalMatches(){
+    return false;
+  }
+  
+  public boolean checkMatches(){
+    return checkHorizontalMatches() || checkVerticalMatches();
   }
   
 }
