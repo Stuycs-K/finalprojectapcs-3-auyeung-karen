@@ -45,7 +45,17 @@ class Board{
         selected = null;
       }
       else{
-        
+        println(selected.getX() + ", " + selected.getY());
+        println(clickedCandy.getX() + ", " + clickedCandy.getY());
+        if (isAdjacent(selected, clickedCandy)){
+          println("adjacent");
+          swapCandies(selected, clickedCandy);
+          selected.setSelected(false);
+          selected = null;
+        }
+        else{
+          println("not adjacent");
+        }
       }
     }
     
@@ -53,7 +63,10 @@ class Board{
   
   public boolean isAdjacent(Candy one, Candy two){
     println("Checking adjacency between (" + one.getX() + ", " + one.getY() + ") and (" + two.getX() + ", " + two.getY() + ")");
-    return false;
+    boolean horizontal = Math.abs(one.getX() - two.getX()) == 1 && one.getY() == two.getY();
+    boolean vertical = Math.abs(one.getY() - two.getY()) == 1 && one.getX() == two.getX();
+    
+    return horizontal || vertical;
   }
   
   public void swapCandies(Candy one, Candy two){
@@ -61,12 +74,23 @@ class Board{
     one.type = two.getType();
     two.type = tempType;
     
-    int tempX = one.getX();
+    /*int tempX = one.getX();
     int tempY = one.getY();
     one.setX(two.getX());
     one.setY(two.getY());
     two.setX(tempX);
-    two.setY(tempY);
+    two.setY(tempY);*/
+  }
+  
+  public void checkHorizontalMatches(){
+    for (int i = 2; i < grid.length-2; i++){
+      for (int j = 2; j < grid[0].length-2; j++){
+        int currentType = grid[i][j].getType();
+        if (grid[i+1][j].getType() == currentType && grid[i+2][j].getType() == currentType){
+          println("three horizontal");
+        }
+      }
+    }
   }
   
 }
