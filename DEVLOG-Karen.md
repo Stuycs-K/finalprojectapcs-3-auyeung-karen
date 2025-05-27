@@ -9,5 +9,9 @@ This document must be updated daily every time you finish a work session.
 * Made it so the board cannot be created with rows/columns of three already
 * Made selecting/deselecting cells possible
 
-### 2024-01-03 - Brief description
-Expanded description including how much time was spent on task.
+### 2024-05-26 - Working on swapping mechanic
+* Spent 1-2 hours attempting to fix swapping mechanic
+* Made game board size larger
+
+### 2024-05-27 - Finished swapping mechanic + working on matching mechanic
+* Spent 40 minutes in class fixing and finishing the swapping mechanic + starting on matching mechanic
