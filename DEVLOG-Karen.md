@@ -15,3 +15,5 @@ This document must be updated daily every time you finish a work session.
 
 ### 2024-05-27 - Finished swapping mechanic + working on matching mechanic
 * Spent 40 minutes in class fixing and finishing the swapping mechanic + starting on matching mechanic
+* Spent 35 minutes at home fixing horizontal + vertical matches detection
+* Can no longer swap without it making a match and being adjacent
