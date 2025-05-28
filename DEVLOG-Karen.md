@@ -17,3 +17,7 @@ This document must be updated daily every time you finish a work session.
 * Spent 40 minutes in class fixing and finishing the swapping mechanic + starting on matching mechanic
 * Spent 35 minutes at home fixing horizontal + vertical matches detection
 * Can no longer swap without it making a match and being adjacent
+
+### 2024-05-28 - Working on matching mechanic
+* Spent 20 minutes in class fixing matching mechanic
+* Fixed bug where if there was any match on the board, you could make a swap
