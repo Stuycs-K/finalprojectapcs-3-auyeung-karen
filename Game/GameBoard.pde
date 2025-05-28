@@ -4,6 +4,7 @@ import java.util.*;
 class Board{
   private Candy[][] grid;
   private Candy selected = null;
+  private Candy clickedCandy = null;
   
   public Board(int rows, int cols){
     grid = new Candy[rows][cols];
@@ -30,7 +31,6 @@ class Board{
   void mouseClick(int mouseX, int mouseY){
     int x = mouseX/cellSize;
     int y = mouseY/cellSize;
-    Candy clickedCandy = null;
     println("Mouse clicked at: (" + mouseX + ", " + mouseY + ")");
     println("Mapped to grid coordinates: (" + x + ", " + y + ")");
     if (x >= 0 && x < 9 && y >= 0 && y < 9){
@@ -50,7 +50,8 @@ class Board{
         if (isAdjacent(selected, clickedCandy)){
           println("adjacent");
           swapCandies(selected, clickedCandy);
-          if (checkMatches()){
+          checkMatches();
+          if (clickedCandy.isMatched()){
             println("match found");
             
           }
@@ -90,8 +91,8 @@ class Board{
     two.setY(tempY);*/
   }
   
-  public boolean checkHorizontalMatches(){
-    boolean hasMatch = false;
+  public void checkHorizontalMatches(){
+    //boolean hasMatch = false;
     for (int i = 0; i < grid.length; i++){
       int count = 1;
       int currentType = grid[i][0].getType();
@@ -105,16 +106,19 @@ class Board{
         }
         
         if (count >= 3){
-          hasMatch = true;
-          println(i + ", " + j);
+          //hasMatch = true;
+          grid[i][j].setMatched(true);
+          grid[i][j-1].setMatched(true);
+          grid[i][j-2].setMatched(true);
         }
       }
     }
-    return hasMatch;
+    //return hasMatch;
+    
   }
   
-  public boolean checkVerticalMatches(){
-    boolean hasMatch = false;
+  public void checkVerticalMatches(){
+    //boolean hasMatch = false;
     for (int j = 0; j < grid[0].length; j++){
       int count = 1;
       int currentType = grid[0][j].getType();
@@ -128,16 +132,19 @@ class Board{
         }
         
         if (count >= 3){
-          hasMatch = true;
-          println(i + ", " + j);
+          //hasMatch = true;
+          grid[i-1][j].setMatched(true);
+          grid[i-1][j].setMatched(true);
+          grid[i-2][j].setMatched(true);
         }
       }
     }
-    return hasMatch;
+    //return hasMatch;
   }
   
-  public boolean checkMatches(){
-    return checkHorizontalMatches() || checkVerticalMatches();
+  public void checkMatches(){
+    checkHorizontalMatches();
+    checkVerticalMatches();
   }
   
 }

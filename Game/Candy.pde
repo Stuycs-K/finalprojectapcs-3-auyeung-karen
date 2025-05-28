@@ -5,6 +5,7 @@ class Candy{
   private int type;
   private int x, y;
   private boolean selected;
+  private boolean matched;
   
   Candy(int x, int y, int type){
     this.x = x;
@@ -30,6 +31,10 @@ class Candy{
      return selected;
   }
   
+  public boolean isMatched(){
+    return matched;
+  }
+  
   //setters
   public void setX(int x){
     this.x = x;
@@ -41,6 +46,10 @@ class Candy{
   
   public void setSelected(boolean selected){
     this.selected = selected;
+  }
+  
+  public void setMatched(boolean matched){
+    this.matched = matched;
   }
   
   
