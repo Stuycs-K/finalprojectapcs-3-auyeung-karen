@@ -50,7 +50,12 @@ class Board{
         if (isAdjacent(selected, clickedCandy)){
           println("adjacent");
           swapCandies(selected, clickedCandy);
-          if (!checkMatches()){
+          if (checkMatches()){
+            println("match found");
+            
+          }
+          else{
+            println("no match");
             swapCandies(selected, clickedCandy);
           }
           selected.setSelected(false);
@@ -86,11 +91,49 @@ class Board{
   }
   
   public boolean checkHorizontalMatches(){
-    return false;
+    boolean hasMatch = false;
+    for (int i = 0; i < grid.length; i++){
+      int count = 1;
+      int currentType = grid[i][0].getType();
+      for (int j = 1; j < grid[0].length; j++){
+        if (grid[i][j].getType() == currentType){
+          count++;
+        }
+        else{
+          currentType = grid[i][j].getType();
+          count = 1;
+        }
+        
+        if (count >= 3){
+          hasMatch = true;
+          println(i + ", " + j);
+        }
+      }
+    }
+    return hasMatch;
   }
   
   public boolean checkVerticalMatches(){
-    return false;
+    boolean hasMatch = false;
+    for (int j = 0; j < grid[0].length; j++){
+      int count = 1;
+      int currentType = grid[0][j].getType();
+      for (int i = 1; i < grid.length; i++){
+        if (grid[i][j].getType() == currentType){
+          count++;
+        }
+        else{
+          currentType = grid[i][j].getType();
+          count = 1;
+        }
+        
+        if (count >= 3){
+          hasMatch = true;
+          println(i + ", " + j);
+        }
+      }
+    }
+    return hasMatch;
   }
   
   public boolean checkMatches(){
