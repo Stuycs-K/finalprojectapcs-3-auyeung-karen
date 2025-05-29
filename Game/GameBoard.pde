@@ -49,18 +49,26 @@ class Board{
         println(clickedCandy.getX() + ", " + clickedCandy.getY());
         if (isAdjacent(selected, clickedCandy)){
           println("adjacent");
-          swapCandies(selected, clickedCandy);
-          checkMatches();
-          if (clickedCandy.isMatched()){
-            println("match found");
-            
+          
+          if (selected.isMatched() || clickedCandy.isMatched()){
+            selected.setSelected(false);
+            selected = null;
           }
           else{
-            println("no match");
             swapCandies(selected, clickedCandy);
+            checkMatches();
+            if (clickedCandy.isMatched()){
+              println("match found");
+            }
+            else{
+              println("no match");
+              swapCandies(selected, clickedCandy);
+            }
+            selected.setSelected(false);
+            selected = null;
           }
-          selected.setSelected(false);
-          selected = null;
+          
+          
         }
         else{
           println("not adjacent");
@@ -95,21 +103,25 @@ class Board{
     //boolean hasMatch = false;
     for (int i = 0; i < grid.length; i++){
       int count = 1;
-      int currentType = grid[i][0].getType();
+      //int currentType = grid[i][0].getType();
       for (int j = 1; j < grid[0].length; j++){
-        if (grid[i][j].getType() == currentType){
+        if (grid[i][j].getType() == grid[i][j-1].getType()){
           count++;
         }
         else{
-          currentType = grid[i][j].getType();
+          if (count >= 3){
+            for (int k = 0; k < count; k++){
+              grid[i][j-1-k].setMatched(true);
+            }
+          }
+          //currentType = grid[i][j].getType();
           count = 1;
         }
-        
-        if (count >= 3){
-          //hasMatch = true;
-          grid[i][j].setMatched(true);
-          grid[i][j-1].setMatched(true);
-          grid[i][j-2].setMatched(true);
+      }
+      if (count >= 3){
+        //hasMatch = true;
+        for (int k = 0; k < count; k ++){
+          grid[i][grid[0].length-1-k].setMatched(true);
         }
       }
     }
@@ -121,21 +133,26 @@ class Board{
     //boolean hasMatch = false;
     for (int j = 0; j < grid[0].length; j++){
       int count = 1;
-      int currentType = grid[0][j].getType();
+      //int currentType = grid[0][j].getType();
       for (int i = 1; i < grid.length; i++){
-        if (grid[i][j].getType() == currentType){
+        if (grid[i][j].getType() == grid[i-1][j].getType()){
           count++;
         }
         else{
-          currentType = grid[i][j].getType();
+          if (count >= 3){
+            for (int k = 0; k < count; k++){
+              grid[i-1-k][j].setMatched(true);
+            }
+          }
+          //currentType = grid[i][j].getType();
           count = 1;
         }
+      }
         
-        if (count >= 3){
-          //hasMatch = true;
-          grid[i-1][j].setMatched(true);
-          grid[i-1][j].setMatched(true);
-          grid[i-2][j].setMatched(true);
+      if (count >= 3){
+        //hasMatch = true;
+        for (int k = 0; k < count; k ++){
+          grid[grid.length-1-k][j].setMatched(true);
         }
       }
     }

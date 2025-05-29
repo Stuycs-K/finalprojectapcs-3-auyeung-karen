@@ -12,6 +12,7 @@ class Candy{
     this.y = y;
     this.type = type;
     selected = false;
+    matched = false;
   }
   
   //getters
