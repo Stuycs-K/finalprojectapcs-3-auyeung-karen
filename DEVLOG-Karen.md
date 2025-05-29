@@ -20,4 +20,5 @@ This document must be updated daily every time you finish a work session.
 
 ### 2024-05-28 - Working on matching mechanic
 * Spent 20 minutes in class fixing matching mechanic
+* Spent 30 minutes at home fixing matching mechanic + starting clearing matches mechanic
 * Fixed bug where if there was any match on the board, you could make a swap
