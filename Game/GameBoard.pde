@@ -73,7 +73,7 @@ class Board{
         }
       }
       clearMatches();
-      
+      refillBoard();
     }
     
   }
@@ -88,8 +88,8 @@ class Board{
   
   public void swapCandies(Candy one, Candy two){
     int tempType = one.getType();
-    one.type = two.getType();
-    two.type = tempType;
+    one.setType(two.getType());
+    two.setType(tempType);
     
     /*int tempX = one.getX();
     int tempY = one.getY();
@@ -169,9 +169,23 @@ class Board{
       for (int j = 0; j < grid[0].length; j++){
         if (grid[i][j].isMatched()){
           grid[i][j].setType(-1);
+          grid[i][j].setMatched(false);
         }
       }
     }
+  }
+  
+  public void refillBoard(){
+    for (int j = 0; j < grid[0].length; j++){
+      for (int i = grid.length-1; i > 0; i--){
+        if (grid[i][j].getType() == -1){
+          //grid[i][j].setType(grid[i-1][j].getType());
+          //grid[i-1][j].setType(-1);
+          swapCandies(grid[i][j], grid[i-1][j]);
+        }
+      }
+    }
+    clearMatches();
   }
   
 }
