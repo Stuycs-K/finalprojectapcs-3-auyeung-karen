@@ -43,6 +43,9 @@ void drawBoard(Board board){
        if (candy.getType() == 5){
          fill(#B745E5); //purple
        }
+       if (candy.getType() == -1){
+         fill(255);
+       }
        int x = j * cellSize;
        int y = i * cellSize;
        rect(x, y, cellSize, cellSize);

@@ -45,6 +45,10 @@ class Candy{
     this.y = y;
   }
   
+  public void setType(int type){
+    this.type = type;
+  }
+  
   public void setSelected(boolean selected){
     this.selected = selected;
   }

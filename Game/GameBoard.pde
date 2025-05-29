@@ -67,13 +67,13 @@ class Board{
             selected.setSelected(false);
             selected = null;
           }
-          
-          
         }
         else{
           println("not adjacent");
         }
       }
+      clearMatches();
+      
     }
     
   }
@@ -162,6 +162,16 @@ class Board{
   public void checkMatches(){
     checkHorizontalMatches();
     checkVerticalMatches();
+  }
+  
+  public void clearMatches(){
+    for (int i = 0; i < grid.length; i++){
+      for (int j = 0; j < grid[0].length; j++){
+        if (grid[i][j].isMatched()){
+          grid[i][j].setType(-1);
+        }
+      }
+    }
   }
   
 }
