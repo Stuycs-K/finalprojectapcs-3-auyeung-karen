@@ -72,6 +72,7 @@ class Board{
           println("not adjacent");
         }
       }
+      //checkMatches();
       clearMatches();
       refillBoard();
     }
@@ -100,10 +101,8 @@ class Board{
   }
   
   public void checkHorizontalMatches(){
-    //boolean hasMatch = false;
     for (int i = 0; i < grid.length; i++){
       int count = 1;
-      //int currentType = grid[i][0].getType();
       for (int j = 1; j < grid[0].length; j++){
         if (grid[i][j].getType() == grid[i][j-1].getType()){
           count++;
@@ -114,26 +113,21 @@ class Board{
               grid[i][j-1-k].setMatched(true);
             }
           }
-          //currentType = grid[i][j].getType();
           count = 1;
         }
       }
       if (count >= 3){
-        //hasMatch = true;
         for (int k = 0; k < count; k ++){
           grid[i][grid[0].length-1-k].setMatched(true);
         }
       }
     }
-    //return hasMatch;
     
   }
   
   public void checkVerticalMatches(){
-    //boolean hasMatch = false;
     for (int j = 0; j < grid[0].length; j++){
       int count = 1;
-      //int currentType = grid[0][j].getType();
       for (int i = 1; i < grid.length; i++){
         if (grid[i][j].getType() == grid[i-1][j].getType()){
           count++;
@@ -144,19 +138,16 @@ class Board{
               grid[i-1-k][j].setMatched(true);
             }
           }
-          //currentType = grid[i][j].getType();
           count = 1;
         }
       }
         
       if (count >= 3){
-        //hasMatch = true;
         for (int k = 0; k < count; k ++){
           grid[grid.length-1-k][j].setMatched(true);
         }
       }
     }
-    //return hasMatch;
   }
   
   public void checkMatches(){
@@ -167,7 +158,7 @@ class Board{
   public void clearMatches(){
     for (int i = 0; i < grid.length; i++){
       for (int j = 0; j < grid[0].length; j++){
-        if (grid[i][j].isMatched()){
+        while (grid[i][j].isMatched()){
           grid[i][j].setType(-1);
           grid[i][j].setMatched(false);
         }
@@ -179,12 +170,11 @@ class Board{
     for (int j = 0; j < grid[0].length; j++){
       for (int i = grid.length-1; i > 0; i--){
         if (grid[i][j].getType() == -1){
-          //grid[i][j].setType(grid[i-1][j].getType());
-          //grid[i-1][j].setType(-1);
           swapCandies(grid[i][j], grid[i-1][j]);
         }
       }
     }
+    //checkMatches();
     clearMatches();
   }
   
