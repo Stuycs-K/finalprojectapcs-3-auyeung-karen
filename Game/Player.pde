@@ -1,25 +1,29 @@
 import java.io.*;
 import java.util.*;
 
-class Player{
-  private int score;
+public class Player{
+  private int score = 0;
   private int highScore;
   
-  Player(int score){
-    this.score = score;
-    highScore = 0;
+  public Player(){
+    this.score = 0;
+    this.highScore = 0;
   }
   
-  void addScore(int added){
+  public void addScore(int added){
     score += added;
   }
   
-  int getScore(){
+  public int getScore(){
     return score;
   }
   
-  void setHighScore(){
-    highScore = score;
+  public int getHighScore(){
+    return highScore;
+  }
+  
+  public void setHighScore(){
+    this.highScore = score;
   }
   
 }

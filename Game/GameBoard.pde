@@ -5,6 +5,7 @@ class Board{
   private Candy[][] grid;
   private Candy selected = null;
   private Candy clickedCandy = null;
+  private Player p1;
   
   public Board(int rows, int cols){
     grid = new Candy[rows][cols];
@@ -23,7 +24,6 @@ class Board{
       }
         
     }
-      
       
       
   }
@@ -82,9 +82,6 @@ class Board{
           selected = null;
         }
       }
-      //checkMatches();
-      //clearMatches();
-      //refillBoard();
       clearMatches();
       refillBoard();
       checkMatches();
@@ -174,14 +171,17 @@ class Board{
   }
   
   public void clearMatches(){
+    int numMatched = 0;
     for (int i = 0; i < grid.length; i++){
       for (int j = 0; j < grid[0].length; j++){
-        while (grid[i][j].isMatched()){
+        if (grid[i][j].isMatched()){
           grid[i][j].setType(-1);
           grid[i][j].setMatched(false);
+          numMatched++;
         }
       }
     }
+    p1.addScore(numMatched);
   }
   
   public boolean hasMatched(){
