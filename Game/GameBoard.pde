@@ -51,38 +51,48 @@ class Board{
           println("adjacent");
           
           if (selected.isMatched() || clickedCandy.isMatched()){
-            clearMatches();
+            /*clearMatches();
             refillBoard();
             checkMatches();
             while (hasMatched()){
               clearMatches();
               refillBoard();
               checkMatches();
-            }
-            //selected.setSelected(false);
-            //selected = null;
+            }*/
+            selected.setSelected(false);
+            selected = null;
           }
           else{
             swapCandies(selected, clickedCandy);
-            /*checkMatches();
+            checkMatches();
             if (clickedCandy.isMatched()){
               println("match found");
             }
             else{
               println("no match");
               swapCandies(selected, clickedCandy);
-            }*/
+            }
             selected.setSelected(false);
             selected = null;
           }
         }
         else{
           println("not adjacent");
+          selected.setSelected(false);
+          selected = null;
         }
       }
       //checkMatches();
+      //clearMatches();
+      //refillBoard();
       clearMatches();
       refillBoard();
+      checkMatches();
+      while (hasMatched()){
+        clearMatches();
+        refillBoard();
+        checkMatches();
+      }
     }
     
   }
