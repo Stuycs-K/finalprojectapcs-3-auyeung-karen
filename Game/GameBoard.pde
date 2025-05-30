@@ -45,25 +45,33 @@ class Board{
         selected = null;
       }
       else{
-        println(selected.getX() + ", " + selected.getY());
-        println(clickedCandy.getX() + ", " + clickedCandy.getY());
+        //println(selected.getX() + ", " + selected.getY());
+        //println(clickedCandy.getX() + ", " + clickedCandy.getY());
         if (isAdjacent(selected, clickedCandy)){
           println("adjacent");
           
           if (selected.isMatched() || clickedCandy.isMatched()){
-            selected.setSelected(false);
-            selected = null;
+            clearMatches();
+            refillBoard();
+            checkMatches();
+            while (hasMatched()){
+              clearMatches();
+              refillBoard();
+              checkMatches();
+            }
+            //selected.setSelected(false);
+            //selected = null;
           }
           else{
             swapCandies(selected, clickedCandy);
-            checkMatches();
+            /*checkMatches();
             if (clickedCandy.isMatched()){
               println("match found");
             }
             else{
               println("no match");
               swapCandies(selected, clickedCandy);
-            }
+            }*/
             selected.setSelected(false);
             selected = null;
           }
@@ -166,15 +174,37 @@ class Board{
     }
   }
   
-  public void refillBoard(){
-    for (int j = 0; j < grid[0].length; j++){
-      for (int i = grid.length-1; i > 0; i--){
-        if (grid[i][j].getType() == -1){
-          swapCandies(grid[i][j], grid[i-1][j]);
+  public boolean hasMatched(){
+    for (int i = 0; i < grid.length; i++){
+      for (int j = 0; j < grid[0].length; j++){
+        if (grid[i][j].isMatched()){
+          return true;
         }
       }
     }
-    //checkMatches();
+    return false;
+  }
+  
+  public void refillBoard(){
+    for (int j = 0; j < grid[0].length; j++){
+      for (int i = grid.length-1; i >= 0; i--){
+        if (grid[i][j].getType() == -1){
+          for (int k = i-1; k >= 0; k--){
+            if (grid[k][j].getType() != -1){
+              grid[i][j].setType(grid[k][j].getType());
+              grid[k][j].setType(-1);
+            }
+          }
+        }
+      }
+      for (int i = 0; i < grid.length; i++){
+        if (grid[i][j].getType() == -1){
+          grid[i][j].setType((int)(Math.random()*6));
+        }
+      }
+      
+    }
+    checkMatches();
     clearMatches();
   }
   
