@@ -7,8 +7,9 @@ class Board{
   private Candy clickedCandy = null;
   private Player p1;
   
-  public Board(int rows, int cols){
+  public Board(int rows, int cols, Player p1){
     grid = new Candy[rows][cols];
+    p1 = new Player();
     
     for (int i = 0; i < rows; i++){
       for (int j = 0; j < cols; j++){
@@ -181,7 +182,7 @@ class Board{
         }
       }
     }
-    p1.addScore(numMatched);
+    //p1.addScore(numMatched);
   }
   
   public boolean hasMatched(){

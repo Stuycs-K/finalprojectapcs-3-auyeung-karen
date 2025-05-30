@@ -1,19 +1,21 @@
-Board board;
-int cellSize;
+private Board board;
+private Player p1;
+private int cellSize;
 
-void setup(){
-  size(900,900);
+public void setup(){
+  size(900,1000);
   board = new Board(9, 9);
   cellSize = 900/9;
-  //drawBoard(board);
+  p1 = new Player();
 }
 
-void draw(){
+public void draw(){
   background(255);
   drawBoard(board);
+  drawScore(p1);
 }
 
-void drawBoard(Board board){
+public void drawBoard(Board board){
    for (int i = 0; i < 9; i++){
      for (int j = 0; j < 9; j++){
        Candy candy = board.grid[i][j];
@@ -56,9 +58,10 @@ void drawBoard(Board board){
    }
 }
 
+public void drawScore(Player p1){
+}
 
-
-void mousePressed() {
+public void mousePressed() {
   board.mouseClick(mouseX, mouseY);
 }
   
