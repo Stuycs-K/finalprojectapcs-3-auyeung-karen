@@ -22,3 +22,8 @@ This document must be updated daily every time you finish a work session.
 * Spent 20 minutes in class fixing matching mechanic
 * Spent 30 minutes at home fixing matching mechanic + starting clearing matches mechanic
 * Fixed bug where if there was any match on the board, you could make a swap
+
+### 2024-05-29 - Working on refilling mechanic
+* Spent 35 minutes in class working on refilling mechanic
+* Spent 40 minutes at home working on refilling mechanic
+* Finished basic clearing candies and being able to refill the board, need to test
