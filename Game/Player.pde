@@ -12,6 +12,9 @@ public class Player{
   
   public void addScore(int added){
     score += added;
+    if (score > highScore){
+      setHighScore(score);
+    }
   }
   
   public int getScore(){
@@ -22,8 +25,12 @@ public class Player{
     return highScore;
   }
   
-  public void setHighScore(){
+  public void setHighScore(int score){
     this.highScore = score;
+  }
+  
+  public void resetScore(){
+    score = 0;
   }
   
 }

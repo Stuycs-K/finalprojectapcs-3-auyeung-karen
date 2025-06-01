@@ -27,3 +27,11 @@ This document must be updated daily every time you finish a work session.
 * Spent 35 minutes in class working on refilling mechanic
 * Spent 40 minutes at home working on refilling mechanic
 * Finished basic clearing candies and being able to refill the board, need to test
+
+### 2024-05-30 - Refilling mechanic + player scores
+* Spent 40 minutes in class fixing refilling mechanic + implementing scoring
+
+### 2024-06-01 - Working on player scores
+* Spent 30 minutes at home implementing scoring
+* Added key (R) to reset game
+
