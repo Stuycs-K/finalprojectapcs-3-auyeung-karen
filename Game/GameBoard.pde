@@ -29,6 +29,8 @@ class Board{
   }
   
   void mouseClick(int mouseX, int mouseY){
+    mouseX -= 700;
+    mouseY -= 25;
     int x = mouseX/cellSize;
     int y = mouseY/cellSize;
     println("Mouse clicked at: (" + mouseX + ", " + mouseY + ")");

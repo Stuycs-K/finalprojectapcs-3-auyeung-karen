@@ -1,16 +1,18 @@
 private Board board;
 private Player p1;
 private int cellSize;
+private PImage background;
 
 public void setup(){
-  size(900,1000);
+  size(1920,1080);
   p1 = new Player(30);
   board = new Board(9, 9);
   cellSize = 900/9;
+  background = loadImage("candycrush.jpg");
 }
 
 public void draw(){
-  background(255);
+  background(background);
   drawBoard(board);
   drawScore(p1);
 }
@@ -51,7 +53,7 @@ public void drawBoard(Board board){
          }
          int x = j * cellSize;
          int y = i * cellSize;
-         rect(x, y, cellSize, cellSize);
+         rect(x+700, y+25, cellSize, cellSize);
        }
        
      }
@@ -60,6 +62,7 @@ public void drawBoard(Board board){
 
 public void drawScore(Player p1){
   fill(0);
+  rect(10, 0, 100, 300);
   text("Score: " + p1.getScore(), 20, 940);
   text("High Score: " + p1.getHighScore(), 20, 960);
   text("Moves left: " + p1.getNumMoves(), 20, 980);
