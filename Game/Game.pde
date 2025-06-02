@@ -4,8 +4,8 @@ private int cellSize;
 
 public void setup(){
   size(900,1000);
-  p1 = new Player();
-  board = new Board(9, 9, p1);
+  p1 = new Player(30);
+  board = new Board(9, 9);
   cellSize = 900/9;
 }
 
@@ -60,8 +60,9 @@ public void drawBoard(Board board){
 
 public void drawScore(Player p1){
   fill(0);
-  text("Score: " + p1.getScore(), 20, 540);
-  text("High Score: " + p1.getHighScore(), 20, 560);
+  text("Score: " + p1.getScore(), 20, 940);
+  text("High Score: " + p1.getHighScore(), 20, 960);
+  text("Moves left: " + p1.getNumMoves(), 20, 980);
 }
 
 public void mousePressed() {
@@ -76,7 +77,7 @@ public void keyPressed(){
 
 public void resetGame(){
   p1.resetScore();
-  board = new Board(9, 9, p1);
+  board = new Board(9, 9);
 }
   
   

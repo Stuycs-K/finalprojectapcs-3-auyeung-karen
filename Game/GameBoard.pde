@@ -7,7 +7,7 @@ class Board{
   private Candy clickedCandy = null;
   //private Player p1;
   
-  public Board(int rows, int cols, Player p1){
+  public Board(int rows, int cols){
     grid = new Candy[rows][cols];
     
     for (int i = 0; i < rows; i++){
@@ -67,6 +67,7 @@ class Board{
             checkMatches();
             if (clickedCandy.isMatched()){
               println("match found");
+              p1.numMoves--;
             }
             else{
               println("no match");
