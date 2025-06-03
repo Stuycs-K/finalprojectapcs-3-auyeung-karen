@@ -2,6 +2,7 @@ private Board board;
 private Player p1;
 private int cellSize;
 private PImage background;
+private PFont candycrush;
 
 public void setup(){
   size(1920,1080);
@@ -61,11 +62,18 @@ public void drawBoard(Board board){
 }
 
 public void drawScore(Player p1){
+  fill(#FFB4D1);
+  rect(175, 200, 350, 550, 10);
+  fill(#F782AF);
+  rect(200, 225, 300, 100, 20);
+  candycrush = createFont("LobsterTwo", 10);
+  textFont(candycrush);
   fill(0);
-  rect(10, 0, 100, 300);
-  text("Score: " + p1.getScore(), 20, 940);
+  textSize(36);
+  text("Score: " + p1.getScore(), 220, 290);
   text("High Score: " + p1.getHighScore(), 20, 960);
   text("Moves left: " + p1.getNumMoves(), 20, 980);
+
 }
 
 public void mousePressed() {
