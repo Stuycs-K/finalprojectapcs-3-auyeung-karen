@@ -35,3 +35,6 @@ This document must be updated daily every time you finish a work session.
 * Spent 30 minutes at home implementing scoring
 * Added key (R) to reset game
 
+### 2024-06-02 - Working on background
+* Spent 40 minutes in class
+
