@@ -38,3 +38,5 @@ This document must be updated daily every time you finish a work session.
 ### 2024-06-02 - Working on background
 * Spent 40 minutes in class
 
+### 2024-06-03 - Working on background + animation
+* Spent 40 minutes in class working on background and animation
