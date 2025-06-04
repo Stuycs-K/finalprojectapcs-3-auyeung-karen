@@ -7,5 +7,6 @@ The game will feature a 9x9 grid game board where the candies are displayed.
 
 # Intended usage:
 
+Click on candy squares to select/deselect them. While a candy is selected, click on adjacent candies that will make a match of three or more to crush them. The score increases every time rows or columns of candies are crushed. Press 'r' or 'R' to reset the score and number of moves; high score will be kept.
+
 A description as to how the project will be used (describe the user interface). (CHANGE THIS!!!!!)
-  

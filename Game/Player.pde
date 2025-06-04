@@ -5,18 +5,20 @@ public class Player{
   private int score = 0;
   private int highScore;
   private int numMoves;
+  private int maxNumMoves;
   
   public Player(int numMoves){
     this.score = 0;
     this.highScore = 0;
     this.numMoves = numMoves;
+    maxNumMoves = numMoves;
   }
   
   public void addScore(int added){
     score += added;
-    if (score > highScore){
+    /*if (score > highScore){
       setHighScore(score);
-    }
+    }*/
   }
   
   public int getScore(){
@@ -35,7 +37,15 @@ public class Player{
     this.highScore = score;
   }
   
+  public void resetNumMoves(){
+    this.numMoves = maxNumMoves;
+  }
+  
   public void resetScore(){
+    if (score > highScore){
+      setHighScore(score);
+    }
+    resetNumMoves();
     score = 0;
   }
   

@@ -93,13 +93,15 @@ public void drawScore(Player p1){
   rect(175, 200, 350, 550, 10);
   fill(#F782AF);
   rect(200, 225, 300, 100, 20);
+  rect(200, 350, 300, 100, 20);
+  rect(200, 475, 300, 100, 20);
   candycrush = createFont("LobsterTwo", 10);
   textFont(candycrush);
   fill(0);
   textSize(36);
   text("Score: " + p1.getScore(), 220, 290);
-  text("High Score: " + p1.getHighScore(), 20, 960);
-  text("Moves left: " + p1.getNumMoves(), 20, 980);
+  text("High Score: " + p1.getHighScore(), 220, 405);
+  text("Moves left: " + p1.getNumMoves(), 220, 540);
 }
 
 public void mousePressed() {
