@@ -64,6 +64,8 @@ public void drawBoard(Board board){
 }
 
 public void animate(){
+  boolean animating = false;
+  
   for (int i = 0; i < 9; i++){
     for (int j = 0; j < 9; j++){
       Candy candy = board.grid[i][j];
@@ -73,6 +75,7 @@ public void animate(){
         if (abs(currentY - targetY) > 0.01){
           float newY = lerp(currentY, targetY, 0.1); // start, end, increment
           candy.setAnimatedY(newY);
+          animating = true;
         }
         else{
           candy.setAnimatedY(targetY);
@@ -80,6 +83,7 @@ public void animate(){
       }
     }
   }
+  board.setAnimating(animating);
 }
 
 public void drawScore(Player p1){

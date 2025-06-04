@@ -4,7 +4,8 @@ import java.util.*;
 class Board{
   private Candy[][] grid;
   private Candy selected = null;
-  private Candy clickedCandy = null;
+  private Candy clickedCandy = null; 
+  private boolean isAnimating = false;
   //private Player p1;
   
   public Board(int rows, int cols){
@@ -22,10 +23,16 @@ class Board{
         }
         grid[i][j] = new Candy(j, i, type);
       }
-        
     }
-      
-      
+    
+  }
+  
+  public boolean isAnimating(){
+    return isAnimating;
+  }
+  
+  public void setAnimating(boolean animating){
+    this.isAnimating = animating;
   }
   
   void mouseClick(int mouseX, int mouseY){
@@ -35,7 +42,7 @@ class Board{
     int y = mouseY/cellSize;
     println("Mouse clicked at: (" + mouseX + ", " + mouseY + ")");
     println("Mapped to grid coordinates: (" + x + ", " + y + ")");
-    if (x >= 0 && x < 9 && y >= 0 && y < 9){
+    if (x >= 0 && x < 9 && y >= 0 && y < 9 && !isAnimating){
       clickedCandy = grid[y][x];
       
       if (selected == null){
