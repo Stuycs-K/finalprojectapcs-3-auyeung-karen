@@ -16,6 +16,7 @@ public void draw(){
   background(background);
   drawBoard(board);
   drawScore(p1);
+  animate();
 }
 
 public void drawBoard(Board board){
@@ -53,12 +54,32 @@ public void drawBoard(Board board){
            fill(255);
          }
          int x = j * cellSize;
-         int y = i * cellSize;
-         rect(x+700, y+25, cellSize, cellSize);
+         //int y = i * cellSize;
+         float animatedY = candy.getAnimatedY() * cellSize;
+         rect(x+700, animatedY+25, cellSize, cellSize);
        }
        
      }
    }
+}
+
+public void animate(){
+  for (int i = 0; i < 9; i++){
+    for (int j = 0; j < 9; j++){
+      Candy candy = board.grid[i][j];
+      if (candy != null){
+        float targetY = candy.getY();
+        float currentY = candy.getAnimatedY();
+        if (abs(currentY - targetY) > 0.01){
+          float newY = lerp(currentY, targetY, 0.1); // start, end, increment
+          candy.setAnimatedY(newY);
+        }
+        else{
+          candy.setAnimatedY(targetY);
+        }
+      }
+    }
+  }
 }
 
 public void drawScore(Player p1){
@@ -73,7 +94,6 @@ public void drawScore(Player p1){
   text("Score: " + p1.getScore(), 220, 290);
   text("High Score: " + p1.getHighScore(), 20, 960);
   text("Moves left: " + p1.getNumMoves(), 20, 980);
-
 }
 
 public void mousePressed() {

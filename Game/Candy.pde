@@ -4,12 +4,14 @@ import java.util.*;
 class Candy{
   private int type;
   private int x, y;
+  private float animatedY;
   private boolean selected;
   private boolean matched;
   
   Candy(int x, int y, int type){
     this.x = x;
     this.y = y;
+    this.animatedY = y;
     this.type = type;
     selected = false;
     matched = false;
@@ -22,6 +24,10 @@ class Candy{
   
   public int getY(){
     return y;
+  }
+  
+  public float getAnimatedY(){
+    return animatedY;
   }
   
   public int getType(){
@@ -43,6 +49,10 @@ class Candy{
   
   public void setY(int y){
     this.y = y;
+  }
+  
+  public void setAnimatedY(float animatedY){
+    this.animatedY = animatedY;
   }
   
   public void setType(int type){

@@ -206,6 +206,8 @@ class Board{
             if (grid[k][j].getType() != -1){
               grid[i][j].setType(grid[k][j].getType());
               grid[k][j].setType(-1);
+              grid[i][j].setY(i);
+              grid[i][j].setAnimatedY(k); // animation starts from up
             }
           }
         }
@@ -213,6 +215,8 @@ class Board{
       for (int i = 0; i < grid.length; i++){
         if (grid[i][j].getType() == -1){
           grid[i][j].setType((int)(Math.random()*6));
+          grid[i][j].setY(i);
+          grid[i][j].setAnimatedY(i-1);
         }
       }
       
