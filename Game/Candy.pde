@@ -7,6 +7,7 @@ class Candy{
   private float animatedY;
   private boolean selected;
   private boolean matched;
+  private boolean falling;
   
   Candy(int x, int y, int type){
     this.x = x;
@@ -32,6 +33,10 @@ class Candy{
   
   public int getType(){
      return type;
+  }
+  
+  public boolean isFalling(){
+    return falling;
   }
   
   public boolean isSelected(){
@@ -65,6 +70,10 @@ class Candy{
   
   public void setMatched(boolean matched){
     this.matched = matched;
+  }
+  
+  public void setFalling(boolean falling){
+    this.falling = falling;
   }
   
   

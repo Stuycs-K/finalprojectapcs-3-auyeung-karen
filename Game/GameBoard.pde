@@ -208,13 +208,15 @@ class Board{
   public void refillBoard(){
     for (int j = 0; j < grid[0].length; j++){
       for (int i = grid.length-1; i >= 0; i--){
-        if (grid[i][j].getType() == -1){
+        if (grid[i][j].getType() == -1){ // look for non-empty spot above
           for (int k = i-1; k >= 0; k--){
-            if (grid[k][j].getType() != -1){
+            if (grid[k][j].getType() != -1 && !grid[k][j].isFalling()){
+              //candy moves down
               grid[i][j].setType(grid[k][j].getType());
-              grid[k][j].setType(-1);
               grid[i][j].setY(i);
               grid[i][j].setAnimatedY(k); // animation starts from up
+              grid[i][j].setFalling(true); // above pieces falling
+              grid[k][j].setType(-1);
             }
           }
         }
@@ -224,6 +226,7 @@ class Board{
           grid[i][j].setType((int)(Math.random()*6));
           grid[i][j].setY(i);
           grid[i][j].setAnimatedY(i-1);
+          grid[i][j].setFalling(true);
         }
       }
       

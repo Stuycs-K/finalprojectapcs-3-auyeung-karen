@@ -73,12 +73,14 @@ public void animate(){
         float targetY = candy.getY();
         float currentY = candy.getAnimatedY();
         if (abs(currentY - targetY) > 0.01){
-          float newY = lerp(currentY, targetY, 0.1); // start, end, increment
-          candy.setAnimatedY(newY);
+          float newY = lerp(currentY, targetY, 0.15); // start, end, increment
+          candy.setAnimatedY(newY); // animation
+          candy.setFalling(true);
           animating = true;
         }
         else{
           candy.setAnimatedY(targetY);
+          candy.setFalling(false); // finish
         }
       }
     }
