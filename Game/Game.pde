@@ -2,6 +2,7 @@ private Board board;
 private Player p1;
 private int cellSize;
 private PImage background;
+private PImage purple;
 private PFont candycrush;
 
 public void setup(){
@@ -10,16 +11,20 @@ public void setup(){
   board = new Board(9, 9);
   cellSize = 900/9;
   background = loadImage("candycrush.jpg");
+  purple = loadImage("purple.jpg");
 }
 
 public void draw(){
   background(background);
+  fill(#5F7AB4);
+  rect(700, 25, 900, 900);
   drawBoard(board);
   drawScore(p1);
   animate();
 }
 
 public void drawBoard(Board board){
+  float size = 100;
    for (int i = 0; i < 9; i++){
      for (int j = 0; j < 9; j++){
        Candy candy = board.grid[i][j];
@@ -48,7 +53,8 @@ public void drawBoard(Board board){
            fill(#458EE5); //blue
          }
          if (candy.getType() == 5){
-           fill(#B745E5); //purple
+           image(purple, candy.getX(), candy.getY(), size, size);
+           //fill(#B745E5); //purple
          }
          if (candy.getType() == -1){
            fill(255);
@@ -73,7 +79,7 @@ public void animate(){
         float targetY = candy.getY();
         float currentY = candy.getAnimatedY();
         if (abs(currentY - targetY) > 0.01){
-          float newY = lerp(currentY, targetY, 0.15); // start, end, increment
+          float newY = lerp(currentY, targetY, 0.1); // start, end, increment
           candy.setAnimatedY(newY); // animation
           candy.setFalling(true);
           animating = true;

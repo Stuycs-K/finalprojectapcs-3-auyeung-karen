@@ -116,13 +116,6 @@ class Board{
     int tempType = one.getType();
     one.setType(two.getType());
     two.setType(tempType);
-    
-    /*int tempX = one.getX();
-    int tempY = one.getY();
-    one.setX(two.getX());
-    one.setY(two.getY());
-    two.setX(tempX);
-    two.setY(tempY);*/
   }
   
   public void checkHorizontalMatches(){
