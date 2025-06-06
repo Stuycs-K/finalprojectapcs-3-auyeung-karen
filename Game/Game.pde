@@ -84,7 +84,7 @@ public void drawBoard(Board board){
 
 public void animate(){
   boolean animating = false;
-  float frame = 0.1;
+  float frame = 0.01;
   
   for (int i = 0; i < 9; i++){
     for (int j = 0; j < 9; j++){
@@ -106,11 +106,20 @@ public void animate(){
         else{
           candy.setAnimatedY(targetY);
           candy.setFalling(false); // finish
+          animating = false;
         }
       }
     }
   }
   board.setAnimating(animating);
+  if (!animating){
+    println("helloooo");
+    while (board.hasMatched()){
+      board.clearMatches();
+      board.refillBoard();
+      board.checkMatches();
+    }
+  }
 }
 
 public void drawScore(Player p1){
@@ -125,7 +134,7 @@ public void drawScore(Player p1){
   fill(0);
   textSize(36);
   text("Score: " + p1.getScore(), 220, 290);
-  text("High Score: " + p1.getHighScore(), 220, 405);
+  text("High Score: " + p1.getHighScore(), 220, 415);
   text("Moves left: " + p1.getNumMoves(), 220, 540);
 }
 
