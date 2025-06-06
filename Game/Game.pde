@@ -84,6 +84,7 @@ public void drawBoard(Board board){
 
 public void animate(){
   boolean animating = false;
+  float frame = 0.1;
   
   for (int i = 0; i < 9; i++){
     for (int j = 0; j < 9; j++){
@@ -91,9 +92,14 @@ public void animate(){
       if (candy != null){
         float targetY = candy.getY();
         float currentY = candy.getAnimatedY();
-        if (abs(currentY - targetY) > 0.01){
-          float newY = lerp(currentY, targetY, 0.1); // start, end, increment
-          candy.setAnimatedY(newY); // animation
+        
+        if (abs(currentY - targetY) > frame){
+          if (currentY < targetY){
+            candy.setAnimatedY(currentY+frame);
+          }
+          else{
+            candy.setAnimatedY(currentY - frame);
+          }
           candy.setFalling(true);
           animating = true;
         }

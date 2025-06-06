@@ -6,6 +6,8 @@ class Board{
   private Candy selected = null;
   private Candy clickedCandy = null; 
   private boolean isAnimating = false;
+  private boolean isRefilling = false;
+  private ArrayList<Candy> fallingCandies = new ArrayList<Candy>();
   //private Player p1;
   
   public Board(int rows, int cols){
@@ -33,6 +35,14 @@ class Board{
   
   public void setAnimating(boolean animating){
     this.isAnimating = animating;
+  }
+  
+  public boolean isRefilling(){
+    return isRefilling;
+  }
+  
+  public ArrayList<Candy> getFallingCandies(){
+    return fallingCandies;
   }
   
   void mouseClick(int mouseX, int mouseY){
@@ -199,9 +209,16 @@ class Board{
   }
   
   public void refillBoard(){
+    isRefilling = true;
+    fallingCandies.clear();
+    
     for (int j = 0; j < grid[0].length; j++){
+      // start from bottom to up
       for (int i = grid.length-1; i >= 0; i--){
-        if (grid[i][j].getType() == -1){ // look for non-empty spot above
+        
+        if (grid[i][j].getType() == -1){
+          // look for non-empty spot above
+          
           for (int k = i-1; k >= 0; k--){
             if (grid[k][j].getType() != -1 && !grid[k][j].isFalling()){
               //candy moves down
@@ -209,23 +226,32 @@ class Board{
               grid[i][j].setY(i);
               grid[i][j].setAnimatedY(k); // animation starts from up
               grid[i][j].setFalling(true); // above pieces falling
+              fallingCandies.add(grid[i][j]);
+              
               grid[k][j].setType(-1);
             }
           }
+          
         }
+        
       }
+      
+    }
+    
+    for (int j = 0; j < grid[0].length; j++){
       for (int i = 0; i < grid.length; i++){
         if (grid[i][j].getType() == -1){
           grid[i][j].setType((int)(Math.random()*6));
           grid[i][j].setY(i);
           grid[i][j].setAnimatedY(i-1);
           grid[i][j].setFalling(true);
+          fallingCandies.add(grid[i][j]);
         }
       }
       
     }
-    checkMatches();
-    clearMatches();
+    
+    isRefilling = false;
   }
   
 }
