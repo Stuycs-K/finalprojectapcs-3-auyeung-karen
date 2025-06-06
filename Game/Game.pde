@@ -17,11 +17,11 @@ public void setup(){
   cellSize = 900/9;
   background = loadImage("candycrush.jpg");
   
-  /*redCandy = loadImage("purple.png");
-  orangeCandy = loadImage("purple.png");
-  yellowCandy = loadImage("purple.png");
-  greenCandy = loadImage("purple.png");
-  blueCandy = loadImage("purple.png");*/
+  redCandy = loadImage("red.png");
+  orangeCandy = loadImage("orange.png");
+  yellowCandy = loadImage("yellow.png");
+  greenCandy = loadImage("green.png");
+  blueCandy = loadImage("blue.png");
   purpleCandy = loadImage("purple.png");
 }
 
@@ -32,7 +32,6 @@ public void draw(){
   drawBoard(board);
   drawScore(p1);
   animate();
-  image(purpleCandy, 0, 0);
 }
 
 public void drawBoard(Board board){
@@ -40,51 +39,55 @@ public void drawBoard(Board board){
    for (int i = 0; i < 9; i++){
      for (int j = 0; j < 9; j++){
        Candy candy = board.grid[i][j];
-       if (candy != null){
+       int x = j * cellSize;
+       //int y = i * cellSize;
+       float animatedY = candy.getAnimatedY() * cellSize;
          if (candy.isSelected()){
-           stroke(0);
-           strokeWeight(4);
+           fill(255);
+           rect(x+700, animatedY+25, 100, 100);
+           //stroke(0);
+           //strokeWeight(4);
          }
          else{
            noStroke();
          }
-         
-         int x = j * cellSize;
-         //int y = i * cellSize;
-         float animatedY = candy.getAnimatedY() * cellSize;
-         
          if (candy.getType() == 0){
-           fill(#E53535); //red
+           image(redCandy, x+700, animatedY+25, size, size);
+           //fill(#E53535); //red
          }
          if (candy.getType() == 1){
-           fill(#FCA240); //orange
+           image(orangeCandy, x+700, animatedY+25, size, size);
+           //fill(#FCA240); //orange
          }
          if (candy.getType() == 2){
-           fill(#FCD94A); //yellow
+           image(yellowCandy, x+700, animatedY+25, size, size);
+           //fill(#FCD94A); //yellow
          }
          if (candy.getType() == 3){
-           fill(#40D346); //green
+           image(greenCandy, x+700, animatedY+25, size, size);
+           //fill(#40D346); //green
          }
          if (candy.getType() == 4){
-           fill(#458EE5); //blue
+           image(blueCandy, x+700, animatedY+25, size, size);
+           //fill(#458EE5); //blue
          }
          if (candy.getType() == 5){
-           //image(purpleCandy, x+700, animatedY+25, size, size);
-           fill(#B745E5); //purple
+           image(purpleCandy, x+700, animatedY+25, size, size);
+           //fill(#B745E5); //purple
          }
          if (candy.getType() == -1){
            fill(255);
          }
-         rect(x+700, animatedY+25, cellSize, cellSize);
+         //rect(x+700, animatedY+25, cellSize, cellSize);
        }
        
-     }
+     
    }
 }
 
 public void animate(){
   boolean animating = false;
-  float frame = 0.01;
+  float frame = 0.05;
   
   for (int i = 0; i < 9; i++){
     for (int j = 0; j < 9; j++){
@@ -112,14 +115,14 @@ public void animate(){
     }
   }
   board.setAnimating(animating);
-  if (!animating){
-    println("helloooo");
+  /*if (!animating){
+    //println("helloooo");
     while (board.hasMatched()){
       board.clearMatches();
       board.refillBoard();
       board.checkMatches();
     }
-  }
+  }*/
 }
 
 public void drawScore(Player p1){
