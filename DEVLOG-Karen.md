@@ -45,3 +45,7 @@ This document must be updated daily every time you finish a work session.
 
 ### 2024-06-04 - Working on background
 * Spent 40 minutes in class working on formatting text and images
+
+### 2024-06-5  - Working on falling mechanic
+* Spent 2 hours at home trying to fix falling mechanic
+* Falling uses frames now
