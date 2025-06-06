@@ -2,7 +2,12 @@ private Board board;
 private Player p1;
 private int cellSize;
 private PImage background;
-private PImage purple;
+private PImage redCandy;
+private PImage orangeCandy;
+private PImage yellowCandy;
+private PImage greenCandy;
+private PImage blueCandy;
+private PImage purpleCandy;
 private PFont candycrush;
 
 public void setup(){
@@ -11,7 +16,13 @@ public void setup(){
   board = new Board(9, 9);
   cellSize = 900/9;
   background = loadImage("candycrush.jpg");
-  purple = loadImage("purple.jpg");
+  
+  /*redCandy = loadImage("purple.png");
+  orangeCandy = loadImage("purple.png");
+  yellowCandy = loadImage("purple.png");
+  greenCandy = loadImage("purple.png");
+  blueCandy = loadImage("purple.png");*/
+  purpleCandy = loadImage("purple.png");
 }
 
 public void draw(){
@@ -21,6 +32,7 @@ public void draw(){
   drawBoard(board);
   drawScore(p1);
   animate();
+  image(purpleCandy, 0, 0);
 }
 
 public void drawBoard(Board board){
@@ -36,6 +48,10 @@ public void drawBoard(Board board){
          else{
            noStroke();
          }
+         
+         int x = j * cellSize;
+         //int y = i * cellSize;
+         float animatedY = candy.getAnimatedY() * cellSize;
          
          if (candy.getType() == 0){
            fill(#E53535); //red
@@ -53,15 +69,12 @@ public void drawBoard(Board board){
            fill(#458EE5); //blue
          }
          if (candy.getType() == 5){
-           image(purple, candy.getX(), candy.getY(), size, size);
-           //fill(#B745E5); //purple
+           //image(purpleCandy, x+700, animatedY+25, size, size);
+           fill(#B745E5); //purple
          }
          if (candy.getType() == -1){
            fill(255);
          }
-         int x = j * cellSize;
-         //int y = i * cellSize;
-         float animatedY = candy.getAnimatedY() * cellSize;
          rect(x+700, animatedY+25, cellSize, cellSize);
        }
        
