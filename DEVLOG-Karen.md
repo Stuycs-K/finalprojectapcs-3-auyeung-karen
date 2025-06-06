@@ -42,3 +42,6 @@ This document must be updated daily every time you finish a work session.
 * Spent 40 minutes in class working on background and animation
 * Spent 40 minutes at home working on animation
 * Candies now fall down
+
+### 2024-06-04 - Working on background
+* Spent 40 minutes in class working on formatting text and images
