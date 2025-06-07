@@ -49,3 +49,9 @@ This document must be updated daily every time you finish a work session.
 ### 2024-06-5  - Working on falling mechanic
 * Spent 2 hours at home trying to fix falling mechanic
 * Falling uses frames now
+
+### 2024-06-6  - Fixed falling mechanic + candy pngs
+* Spent 40 minutes in class adding candy pngs + fixing falling animation
+* Spent 1 hour at home fixing matching, clearing, and refilling
+* Added modes for each of the mechanics so they don't happen at the same time
+* Added undoSwaps as a separate method from mouseClick
