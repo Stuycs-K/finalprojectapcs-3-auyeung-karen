@@ -1,6 +1,7 @@
 private Board board;
 private Player p1;
 private int cellSize;
+
 private PImage background;
 private PImage redCandy;
 private PImage orangeCandy;
@@ -8,7 +9,16 @@ private PImage yellowCandy;
 private PImage greenCandy;
 private PImage blueCandy;
 private PImage purpleCandy;
+
 private PFont candycrush;
+
+private static int IDLE = 0;
+private static int SWAPPING = 1;
+private static int CHECKING = 2;
+private static int CLEARING = 3;
+private static int REFILLING = 4;
+private static int ANIMATING = 5;
+private static int MODE = IDLE;
 
 public void setup(){
   size(1920,1080);
@@ -32,6 +42,42 @@ public void draw(){
   drawBoard(board);
   drawScore(p1);
   animate();
+  
+  if (MODE == SWAPPING){
+    board.checkMatches();
+    MODE = CHECKING;
+  }
+  else if (MODE == CHECKING){
+    if (board.hasMatched()){
+      p1.numMoves--;
+      MODE = CLEARING;
+    }
+    else{
+      board.undoSwap();
+      MODE = IDLE;
+    }
+  }
+  else if (MODE == CLEARING){
+    board.clearMatches();
+    MODE = REFILLING;
+  }
+  else if (MODE == REFILLING){
+    board.refillBoard();
+    MODE = ANIMATING;
+  }
+  else if (MODE == ANIMATING){
+    if (!board.isAnimating()){
+      board.checkMatches();
+      if (board.hasMatched()){
+        MODE = CLEARING;
+      }
+      else{
+        MODE = IDLE;
+      }
+    }
+  }
+  
+  
 }
 
 public void drawBoard(Board board){
@@ -87,7 +133,7 @@ public void drawBoard(Board board){
 
 public void animate(){
   boolean animating = false;
-  float frame = 0.05;
+  float frame = 0.075;
   
   for (int i = 0; i < 9; i++){
     for (int j = 0; j < 9; j++){
@@ -109,20 +155,11 @@ public void animate(){
         else{
           candy.setAnimatedY(targetY);
           candy.setFalling(false); // finish
-          animating = false;
         }
       }
     }
   }
   board.setAnimating(animating);
-  /*if (!animating){
-    //println("helloooo");
-    while (board.hasMatched()){
-      board.clearMatches();
-      board.refillBoard();
-      board.checkMatches();
-    }
-  }*/
 }
 
 public void drawScore(Player p1){
@@ -142,7 +179,13 @@ public void drawScore(Player p1){
 }
 
 public void mousePressed() {
-  board.mouseClick(mouseX, mouseY);
+  if (MODE == IDLE){
+    boolean swapped = board.mouseClick(mouseX, mouseY);
+    if (swapped){
+      MODE = SWAPPING;
+    }
+  }
+  
 }
 
 public void keyPressed(){

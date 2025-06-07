@@ -7,8 +7,9 @@ class Board{
   private Candy clickedCandy = null; 
   private boolean isAnimating = false;
   private boolean isRefilling = false;
-  private ArrayList<Candy> fallingCandies = new ArrayList<Candy>();
-  //private Player p1;
+  private Candy swappedA = null;
+  private Candy swappedB = null;
+  private boolean validSwap = false;
   
   public Board(int rows, int cols){
     grid = new Candy[rows][cols];
@@ -41,13 +42,13 @@ class Board{
     return isRefilling;
   }
   
-  void mouseClick(int mouseX, int mouseY){
+  public boolean mouseClick(int mouseX, int mouseY){
     mouseX -= 700;
     mouseY -= 25;
     int x = mouseX/cellSize;
     int y = mouseY/cellSize;
-    println("Mouse clicked at: (" + mouseX + ", " + mouseY + ")");
-    println("Mapped to grid coordinates: (" + x + ", " + y + ")");
+    //println("Mouse clicked at: (" + mouseX + ", " + mouseY + ")");
+    //println("Mapped to grid coordinates: (" + x + ", " + y + ")");
     if (x >= 0 && x < 9 && y >= 0 && y < 9 && mouseX%cellSize > 0 && mouseY%cellSize > 0 && !isAnimating){
       clickedCandy = grid[y][x];
       
@@ -56,6 +57,7 @@ class Board{
         selected.setSelected(true);
       }
       else if (selected == clickedCandy){
+        //deselect same candy
         selected.setSelected(false);
         selected = null;
       }
@@ -63,43 +65,30 @@ class Board{
         //println(selected.getX() + ", " + selected.getY());
         //println(clickedCandy.getX() + ", " + clickedCandy.getY());
         if (isAdjacent(selected, clickedCandy)){
-          println("adjacent");
-          
-          if (selected.isMatched() || clickedCandy.isMatched()){
-            selected.setSelected(false);
-            selected = null;
-          }
-          else{
-            swapCandies(selected, clickedCandy);
-            checkMatches();
-            if (clickedCandy.isMatched() || selected.isMatched()){
-              println("match found");
-              p1.numMoves--;
-            }
-            else{
-              println("no match");
-              swapCandies(selected, clickedCandy);
-            }
-            selected.setSelected(false);
-            selected = null;
-          }
+          //println("adjacent");
+          swapCandies(selected, clickedCandy);
+          swappedA = selected;
+          swappedB = clickedCandy;
+          selected.setSelected(false);
+          selected = null;
+          return true;
         }
         else{
-          println("not adjacent");
+          //println("not adjacent");
           selected.setSelected(false);
           selected = null;
         }
       }
-      clearMatches();
-      refillBoard();
-      checkMatches();
-      /*while (hasMatched()){
-        clearMatches();
-        refillBoard();
-        checkMatches();
-      }*/
     }
-    
+    return false;
+  }
+  
+  public void undoSwap(){
+    if (swappedA != null && swappedB != null){
+      swapCandies(swappedA, swappedB);
+      swappedA = null;
+      swappedB = null;
+    }
   }
   
   public boolean isAdjacent(Candy one, Candy two){
