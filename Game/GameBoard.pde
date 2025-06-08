@@ -9,7 +9,6 @@ class Board{
   private boolean isRefilling = false;
   private Candy swappedA = null;
   private Candy swappedB = null;
-  private boolean validSwap = false;
   
   public Board(int rows, int cols){
     grid = new Candy[rows][cols];
@@ -172,6 +171,7 @@ class Board{
       }
     }
     p1.addScore(numMatched);
+    
   }
   
   public boolean hasMatched(){
@@ -185,9 +185,9 @@ class Board{
     return false;
   }
   
+  
   public void refillBoard(){
     isRefilling = true;
-    
     for (int j = 0; j < grid[0].length; j++){
       // start from bottom to up
       for (int i = grid.length-1; i >= 0; i--){
@@ -198,12 +198,13 @@ class Board{
           for (int k = i-1; k >= 0; k--){
             if (grid[k][j].getType() != -1 && !grid[k][j].isFalling()){
               //candy moves down
-              //grid[k][j].setType(grid[k][j].getType());
-              grid[k][j].setY(i);
-              grid[k][j].setAnimatedY(k); // animation starts from up
-              grid[k][j].setFalling(true); // above pieces falling
-              
+              grid[i][j].setType(grid[k][j].getType());
+              grid[i][j].setY(i);
+              grid[i][j].setAnimatedY(i-1); // animation starts from up
+              grid[i][j].setFalling(true); // above pieces falling
               grid[k][j].setType(-1);
+              grid[k][j].setFalling(false);
+              break;
             }
           }
           
@@ -214,7 +215,7 @@ class Board{
     }
     
     for (int j = 0; j < grid[0].length; j++){
-      for (int i = grid.length-1; i >= 0; i--){
+      for (int i = 0; i < grid.length; i++){
         if (grid[i][j].getType() == -1){
           grid[i][j].setType((int)(Math.random()*6));
           grid[i][j].setY(i);
