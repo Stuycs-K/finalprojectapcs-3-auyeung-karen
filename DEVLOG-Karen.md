@@ -55,3 +55,9 @@ This document must be updated daily every time you finish a work session.
 * Spent 1 hour at home fixing matching, clearing, and refilling
 * Added modes for each of the mechanics so they don't happen at the same time
 * Added undoSwaps as a separate method from mouseClick
+
+### 2024-06-7  - Fixed refilling mechanic + game over
+* Spent 1 hour and 20 mins at home fixing refilling and adding a game over
+* Fixed bug where candies weren't falling down
+* Added game over when moves reach 0
+* Added controls to increase/decrease the number of moves
