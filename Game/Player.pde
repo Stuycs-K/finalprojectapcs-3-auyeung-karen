@@ -37,6 +37,14 @@ public class Player{
     this.highScore = score;
   }
   
+  public void addNumMoves(){
+    numMoves += 1;
+  }
+  
+  public void minusNumMoves(){
+    numMoves -= 1;
+  }
+  
   public void resetNumMoves(){
     this.numMoves = maxNumMoves;
   }

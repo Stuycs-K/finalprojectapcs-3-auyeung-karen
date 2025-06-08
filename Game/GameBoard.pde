@@ -48,7 +48,7 @@ class Board{
     int y = mouseY/cellSize;
     //println("Mouse clicked at: (" + mouseX + ", " + mouseY + ")");
     //println("Mapped to grid coordinates: (" + x + ", " + y + ")");
-    if (x >= 0 && x < 9 && y >= 0 && y < 9 && mouseX%cellSize > 0 && mouseY%cellSize > 0 && !isAnimating){
+    if (x >= 0 && x < 9 && y >= 0 && y < 9 && mouseX%cellSize > 0 && mouseY%cellSize > 0 && !isAnimating && p1.getNumMoves() > 0){
       clickedCandy = grid[y][x];
       
       if (selected == null){

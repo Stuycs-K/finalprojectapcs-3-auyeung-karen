@@ -77,7 +77,9 @@ public void draw(){
     }
   }
   
-  
+  if (p1.getNumMoves() <= 0){
+    drawEnd(p1);
+  }
 }
 
 public void drawBoard(Board board){
@@ -176,6 +178,22 @@ public void drawScore(Player p1){
   text("Score: " + p1.getScore(), 220, 290);
   text("High Score: " + p1.getHighScore(), 220, 415);
   text("Moves left: " + p1.getNumMoves(), 220, 540);
+  textSize(18);
+  text("Press 'r' or 'R' to restart", 220, 610);
+  text("Press '-' or '+' to remove/add" , 220, 640);
+  text("to the number of moves", 220, 660);
+}
+
+public void drawEnd(Player p1){
+  fill(#FFB4D1);
+  int xCord = 1920/2-300;
+  int yCord = 1080/2-100;
+  rect(xCord, yCord, 600, 200, 20);
+  fill(0);
+  textFont(candycrush);
+  textSize(40);
+  text("Game over! Your score: " + p1.getScore(), xCord+30, yCord+75);
+  text("Press r to restart!", xCord+30, yCord+140);
 }
 
 public void mousePressed() {
@@ -191,6 +209,12 @@ public void mousePressed() {
 public void keyPressed(){
   if (key == 'r' || key == 'R'){
     resetGame();
+  }
+  if (key == '+'){
+    p1.addNumMoves();
+  }
+  if (key == '-'){
+    p1.minusNumMoves();
   }
 }
 
