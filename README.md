@@ -16,3 +16,6 @@ Press 'r' or 'R' to reset the score and number of moves; high score will be kept
 Press '+' to increase the number of moves left.
 
 Press '-' to decrease the number of moves left.
+
+Demo video:
+https://drive.google.com/file/d/18uCISpolbKYDA9Jf2r61Lr1eAVHBScfU/view?usp=drive_link
