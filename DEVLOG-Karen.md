@@ -61,3 +61,6 @@ This document must be updated daily every time you finish a work session.
 * Fixed bug where candies weren't falling down
 * Added game over when moves reach 0
 * Added controls to increase/decrease the number of moves
+
+### 2024-06-8  - Recording
+* Spent 30 minutes at home recording demo video
